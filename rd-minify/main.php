@@ -13,3 +13,4 @@ define('RD_MINIFY_FILENAME_CSS', 'style.css');
 require_once('external/jsmin.php');
 require_once('RdMinify.php');
 require_once('RdJsMinify.php');
+require_once('RdCssMinify.php');

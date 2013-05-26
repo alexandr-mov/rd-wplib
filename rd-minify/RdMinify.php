@@ -25,6 +25,10 @@ class RdMinify {
 	}
 
 	public function theHeadUri() {
+		if ( empty($this->hFilename) ) {
+			return;
+		}
+
 		if ( $this->isGlue ) {
 			printf($this->formatUri, $this->getHeadUri());
 			return;
@@ -36,7 +40,12 @@ class RdMinify {
 			printf($this->formatUri, $file);
 		}
 	}
+	
 	public function theFooterUri() {
+		if ( empty($this->fFilename) ) {
+			return;
+		}
+
 		if ( $this->isGlue ) {
 			printf($this->formatUri, $this->getFooterUri());
 			return;
