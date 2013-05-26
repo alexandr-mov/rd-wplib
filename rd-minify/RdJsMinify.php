@@ -9,6 +9,5 @@ class RdJsMinify extends RdMinify {
 		$this->fFilename = RD_MINIFY_FILENAME_JS_FOOTER;
 		$this->funcMinify = 'JSMin::minify';
 		$this->formatUri = "<script src='%s' type='text/javascript'></script>\n";
-		$this->isMinify = true;
 	}
 }

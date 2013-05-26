@@ -8,6 +8,7 @@ class RdMinify {
 	protected $fFilename = '';
 	protected $funcMinify = '';
 	protected $formatUri = '';
+	public $isGlue = true;
 	public $isMinify = true;
 
 	public function __construct() {
@@ -24,10 +25,28 @@ class RdMinify {
 	}
 
 	public function theHeadUri() {
-		printf($this->formatUri, $this->getHeadUri());
+		if ( $this->isGlue ) {
+			printf($this->formatUri, $this->getHeadUri());
+			return;
+		}
+
+		$md5Hash = self::md5Files($this->hFiles);
+		foreach ( $this->hFiles as $file ) {
+			$file = rdPathToUrl($file) . '?' . $md5Hash;
+			printf($this->formatUri, $file);
+		}
 	}
 	public function theFooterUri() {
-		printf($this->formatUri, $this->getFooterUri());
+		if ( $this->isGlue ) {
+			printf($this->formatUri, $this->getFooterUri());
+			return;
+		}
+
+		$md5Hash = self::md5Files($this->fFiles);
+		foreach ( $this->fFiles as $file ) {
+			$file = rdPathToUrl($file) . '?' . $md5Hash;
+			printf($this->formatUri, $file);
+		}
 	}
 
 	public function getHeadUri() {
