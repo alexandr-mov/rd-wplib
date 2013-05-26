@@ -91,17 +91,17 @@ class RdMinify {
 	}
 
 	private static function clear($dir) {
-	  // $oldDate = time() - 3600;
-	  // $dirContent = scandir($dir);
+	  $oldDate = time() - 3600;
+	  $dirContent = scandir($dir);
 
-	  // foreach ( $dirContent as $filename ) {
-	  //   if ( (32 != strlen($filename) || !filemtime($dir.$filename) ) {
-	  //   	continue;
-	  //   }
+	  foreach ( $dirContent as $filename ) {
+	    if ( (32 != strlen($filename)) || !filemtime($dir.$filename) ) {
+	    	continue;
+	    }
 	    
-	  //   if ( filemtime($dir.$filename) < $olddate ) {
-	  //   	unlink($dir.$filename);
-	  //   }
-	  // }
+	    if ( filemtime($dir.$filename) < $olddate ) {
+	    	unlink($dir.$filename);
+	    }
+	  }
 	}
 }
